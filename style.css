@@ -1,6 +1,6 @@
 body{
     background-color: #13141b;
-    color: #ffffff;
+    color: #adf507;
     background-image: url(images/bg-image.png);
     background-repeat: no-repeat;
     background-size: 100%;
@@ -8,14 +8,15 @@ body{
 }
 
 .form-control{
-    background-color:rgba(255, 255, 255, 0.2);
+    background-color:rgba(247, 229, 229, 0.2);
     padding: 22px;
     border: none;
-    border-radius: 25px;
+    border-radius: 25px 10px 14px grey;
+    font-weight: bold;
 }
 .btn{
-    border-radius: 1.5rem;
-    padding: 9px 20px;
+    border-radius: 1.2rem;
+    padding: 9px 25px;
 }
 
 .btn-privious{
@@ -34,8 +35,20 @@ body{
     right: 0;
     height: 100%;
 }
+.search-btn:hover{
+    color: rgb(9, 221, 157);
+    background-image: linear-gradient( purple,  green);
+}
 .single-result{
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(248, 200, 200, 0.2);
     border-radius: 15px;
+    box-shadow: 2px 2px  2px grey;
+    
+}
+
+.made-by{
+margin-top: 200px;
+ text-align: center;
+
 }
 
