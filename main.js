@@ -68,7 +68,7 @@ for (let i = 0; i < getLyrics.length; i++) {
                                 <h2 class="text-success mb-4">${title}</h2>
                                 <pre class="lyric text-white">${currentLyric}</pre>`
       })
-    .catch(error => console.log(error))
+    
     }
 }
 }
