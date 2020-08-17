@@ -1,52 +1,41 @@
-//Search Area
-
+// Active search area
 const searchArea = document.getElementById("searchArea");
-searchArea.addEventListener('keypress', function search(press){
+searchArea.addEventListener('keypress', function search(press) {
     if(press.keyCode == 13){
         getResults(searchArea.value);
     }
-    
-})
-
-//active search Button
-
-const searchBtn = document.getElementById('search-Btn');
-searchBtn.addEventListener('click', function(){
+    }
+)
+// Active search btn
+const searchBtn = document.getElementById("search-btn");
+searchBtn.addEventListener('click', function () {
     getResults(searchArea.value);
-    
 })
-
-//display none
-
-const lyricsArea = document.getElementById("lyricsArea");
-lyricsArea.style.display ="none";
-
-//get data from API
-
-function getResults(value){
+// Get data from api
+function getResults(value) {
     fetch(`https://api.lyrics.ovh/suggest/${value}`)
-    .then(res => res.json())
+    .then(response => response.json())
     .then(songs => displayResult(songs))
 }
-
-//Display result
-
-function displayResult(songs){
-    const allSong = songs.data;
+// Display result function
+function displayResult(songs) {
+    const allSongs = songs.data;
     const searchResult = document.getElementById("searchResult");
-
     for (let i = 0; i < 10; i++) {
-        const title = allSong[i].title;
-        const artist = allSong[i].album.title;
-        searchResult.innerHTML += `<div class="single-result row align-items-center my-3 p-3">
-        <div class="col-md-9">
-            <h3 class="lyrics-name">${title}</h3>
-            <p class="author lead">Album by <span>${artist}</span></p>
-        </div>
-        <div class="col-md-3 text-md-right text-center">
-            <button id="getLyrics" class="btn btn-success">Get Lyrics</button>
-        </div>
-    </div>`
+        const title = allSongs[i].title;
+        const artist = allSongs[i].artist.name;
+        const album = allSongs[i].album.title;
+        const albumCover = allSongs[i].album.cover;
+        searchResult.innerHTML += `<div class="single-result row my-3 p-3 d-flex justify-content-between align-items-center">
+                                    <div class="col-md-9">
+                                        <h3 id="title">${title}</h3>
+                                        <p class="author lead">Album: <span>${album}</span></p>
+                                        <p>Artist: <span id="author">${artist}</span></p>
+                                    </div>
+                                    
+                                    <div class="col-md-3 text-md-right text-center">
+                                        <button class="getLyrics btn btn-success" onclick="getLyrics(this)">Get Lyrics</button>
+                                    </div>
+                                </div>`
     }
 }
-    
